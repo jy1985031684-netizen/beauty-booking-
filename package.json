@@ -1,0 +1,15 @@
+{
+  "name": "beauty-booking",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.2.0",
+    "@line/liff": "^2.22.0",
+    "@supabase/supabase-js": "^2.39.0"
+  }
+}

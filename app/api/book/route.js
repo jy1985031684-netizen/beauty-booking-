@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
-import { sendLineNotify } from '@/lib/line'
+import { notifyOwner } from '@/lib/line'
 import { isBusinessDay } from '@/lib/holidays'
 
 const ALL_SLOTS = ['09:00', '09:45', '10:30', '11:15']
@@ -71,7 +71,7 @@ ${month}月${day}日${hour}:${minute}から1人予約をお願いしたいので
 ▶ 承認する：${approvalUrl}
 ▶ 予約状況：${statusUrl}`
 
-  await sendLineNotify(notifyMessage)
+  await notifyOwner(notifyMessage)
 
   return NextResponse.json({ bookingId: booking.id })
 }

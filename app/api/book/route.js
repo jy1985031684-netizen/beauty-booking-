@@ -71,7 +71,8 @@ ${month}月${day}日${hour}:${minute}から1人予約をお願いしたいので
 ▶ 承認する：${approvalUrl}
 ▶ 予約状況：${statusUrl}`
 
-  await notifyOwner(notifyMessage)
+  const notifyResult = await notifyOwner(notifyMessage)
+console.log('LINE notify result:', notifyResult)
 
   return NextResponse.json({ bookingId: booking.id })
 }

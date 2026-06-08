@@ -39,10 +39,10 @@ export async function GET(request) {
     return html(`<h2>✅ すでに承認済みです</h2><p>${booking.customer_name} 様の予約は確定しています。</p>`)
   }
  
-  const [year, month, day] = booking.booking_date.split('-').map(Number)
-  const [hour, minute] = booking.booking_time.split(':')
+const [year, month, day] = booking.booking_date.split('-').map(Number)
+const [hour, minute] = booking.booking_time.split(':')
 const dow = WEEKDAYS[new Date(year, month - 1, day).getDay()]
-  const endTime = getEndTime(booking.booking_time)
+const endTime = getEndTime(booking.booking_time)
  
   return html(`
     <h2>予約を承認しますか？</h2>
@@ -80,8 +80,9 @@ export async function POST(request) {
     return html('<h2>⚠️ 承認できませんでした</h2><p>すでに承認済みか、予約が見つかりません。</p>')
   }
  
-  const [year, month, day] = booking.booking_date.split('-').map(Number)
-  const [hour, minute] = booking.booking_time.split(':')
+const [year, month, day] = booking.booking_date.split('-').map(Number)
+const [hour, minute] = booking.booking_time.split(':')
+const endTime = getEndTime(booking.booking_time)
 const dow = WEEKDAYS[new Date(year, month - 1, day).getDay()]
  
   const message = `【予約確定のお知らせ】✂️\n\n${booking.customer_name} 様\n\nご予約が確定しました！\n\n📅 ${month}月${day}日（${dow}）\n⏰ ${hour}:${minute}〜${endTime}\n\n当日お待ちしております😊`

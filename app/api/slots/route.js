@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 import { isBusinessDay } from '@/lib/holidays'
 
-cconst SAT_SLOTS = ['09:00', '09:45']
+const SAT_SLOTS = ['09:00', '09:45']
 const SUN_SLOTS = ['09:00', '09:45', '10:30']
 
 function getSlotsForDate(dateStr) {

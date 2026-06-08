@@ -60,7 +60,7 @@ export async function POST(request) {
   const endDate = new Date(year, month - 1, day, Number(hour), Number(minute) + 45)
   const endTime = `${endDate.getHours()}:${String(endDate.getMinutes()).padStart(2, '0')}`
   const weekdays = ['日', '月', '火', '水', '木', '金', '土']
-  const dow = weekdays[new Date(date + 'T00:00:00+09:00').getDay()]
+  const dow = weekdays[new Date(year, month - 1, day).getDay()]
 
   const approvalUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/approve?id=${booking.id}&token=${process.env.APPROVAL_SECRET}`
   const statusUrl = `${process.env.NEXT_PUBLIC_APP_URL}/status/${booking.id}`

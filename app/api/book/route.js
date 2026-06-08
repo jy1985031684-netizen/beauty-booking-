@@ -3,7 +3,14 @@ import { supabase } from '@/lib/supabase'
 import { notifyOwner } from '@/lib/line'
 import { isBusinessDay } from '@/lib/holidays'
 
-const ALL_SLOTS = ['09:00', '09:45', '10:30', '11:15']
+const SAT_SLOTS = ['09:00', '09:45']
+const SUN_SLOTS = ['09:00', '09:45', '10:30']
+
+function getSlotsForDate(dateStr) {
+  const [year, month, day] = dateStr.split('-').map(Number)
+  const dow = new Date(year, month - 1, day).getDay()
+  return dow === 6 ? SAT_SLOTS : SUN_SLOTS
+}
 
 export async function POST(request) {
   const { customerName, customerLineId, date, time } = await request.json()
@@ -13,7 +20,7 @@ export async function POST(request) {
   }
 
   // バリデーション
-  if (!isBusinessDay(date) || !ALL_SLOTS.includes(time)) {
+  if (!isBusinessDay(date) || !getSlotsForDate(date).includes(time)) {
     return NextResponse.json({ error: '無効な日時です' }, { status: 400 })
   }
 

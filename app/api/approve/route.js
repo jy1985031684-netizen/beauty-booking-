@@ -83,7 +83,6 @@ export async function POST(request) {
   const [year, month, day] = booking.booking_date.split('-').map(Number)
   const [hour, minute] = booking.booking_time.split(':')
 const dow = WEEKDAYS[new Date(year, month - 1, day).getDay()]
-  const dow = WEEKDAYS[new Date(booking.booking_date + 'T00:00:00+09:00').getDay()]
  
   const message = `【予約確定のお知らせ】✂️\n\n${booking.customer_name} 様\n\nご予約が確定しました！\n\n📅 ${month}月${day}日（${dow}）\n⏰ ${hour}:${minute}〜${endTime}\n\n当日お待ちしております😊`
  

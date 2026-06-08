@@ -39,9 +39,8 @@ export async function GET(request) {
     return html(`<h2>✅ すでに承認済みです</h2><p>${booking.customer_name} 様の予約は確定しています。</p>`)
   }
  
-  const [, month, day] = booking.booking_date.split('-').map(Number)
-  const [hour, minute] = booking.booking_time.split(':')
   const [year, month, day] = booking.booking_date.split('-').map(Number)
+  const [hour, minute] = booking.booking_time.split(':')
 const dow = WEEKDAYS[new Date(year, month - 1, day).getDay()]
   const endTime = getEndTime(booking.booking_time)
  
@@ -81,9 +80,8 @@ export async function POST(request) {
     return html('<h2>⚠️ 承認できませんでした</h2><p>すでに承認済みか、予約が見つかりません。</p>')
   }
  
-  const [, month, day] = booking.booking_date.split('-').map(Number)
-  const [hour, minute] = booking.booking_time.split(':')
   const [year, month, day] = booking.booking_date.split('-').map(Number)
+  const [hour, minute] = booking.booking_time.split(':')
 const dow = WEEKDAYS[new Date(year, month - 1, day).getDay()]
   const dow = WEEKDAYS[new Date(booking.booking_date + 'T00:00:00+09:00').getDay()]
  
